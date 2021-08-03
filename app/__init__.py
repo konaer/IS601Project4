@@ -31,4 +31,5 @@ def create_app():
         # Create Database Models
         db.create_all()
 
+
         return app
