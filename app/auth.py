@@ -12,6 +12,7 @@ def signup():
     """
     User sign-up page.
 
+
     GET requests serve sign-up page.
     POST requests validate form & user creation.
     """
