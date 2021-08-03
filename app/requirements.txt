@@ -1,0 +1,8 @@
+Flask
+flask-mysql
+simplejson
+flask-wtf
+flask-login
+flask-sqlalchemy
+flask-session
+redis

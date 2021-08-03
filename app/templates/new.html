@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="/oscar/new" method="POST">
+    <div class="row">
+        <div class="col">
+            <label for="sIndex">Index</label>
+            <input id="sIndex" type="text" class="form-control" placeholder="Index" name="sIndex">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="sYear">Year</label>
+            <input id="sYear" type="text" class="form-control" placeholder="Year"
+                   name="sYear">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="sName">Name</label>
+            <input id="sName" type="text" class="form-control" placeholder="Name" name="sName">
+        </div>
+
+        <div class="col">
+            <label for="sAge">Age</label>
+            <input id="sAge" type="text" class="form-control" placeholder="Age" name="sAge">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="sMovie">Movie</label>
+            <input id="sMovie" type="text" class="form-control" placeholder="Movie" name="sName">
+        </div>
+        <div class="col">
+            <label for="sNote">Note</label>
+            <input id="sNote" type="text" class="form-control" placeholder="Note" name="sNote">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Success</button>
+
+</form>
+
+{% endblock %}
+
