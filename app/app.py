@@ -1,6 +1,6 @@
 from typing import List, Dict
 import simplejson as json
-from flask import Flask, request, Response, redirect, session
+from flask import Flask, request, Response, redirect, session, url_for
 from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
@@ -139,43 +139,23 @@ def api_delete(oscar_id) -> str:
 @app.route('/signup', methods=['GET', 'POST'])
 def signup_page():
     return render_template(
-        'signup.jinja2',
-        title='Create an Account.',
+        '/signup.html',
+        title='Create an Account | Flask-Login Tutorial.',
         form=SignupForm(),
         template='signup-page',
         body="Sign up for a user account."
     )
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login_page():
-    return render_template(
-        '/login.jinja2',
-        title='Create an Account.',
-        form=LoginForm,
-        template='login-page',
-        body="Log in to your account."
-    )
+@app.route("/signin")
+def dashboard():
+    # This had to serve a static page b/c of how tutorial made the route
+    return redirect('/dashboard.html')
 
 
-@app.route("/session", methods=["GET"])
-@login_required
-def session_view():
-    """Display session variable value."""
-    return render_template(
-        "session.jinja2",
-        title="MLB Players",
-        template="dashboard-template",
-        session_variable=str(session["redis_test"]),
-    )
+@app.route("/login")
+def login():
+    return redirect(url_for('dashboard'))
 
-
-@app.route("/logout")
-@login_required
-def logout():
-    """User log-out logic."""
-    logout_user()
-    return render_template('login.jinja2')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

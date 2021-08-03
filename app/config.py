@@ -10,6 +10,10 @@ class Config:
     MYSQL_DATABASE_PORT = 3306
     MYSQL_DATABASE_DB = 'oscarData'
 
+    SECRET_KEY = "IHUGVFIYUJYIGUibt6gh"
+    FLASK_APP = "development"
+    FLASK_ENV = "app.py"
+
     # Flask-SQLAlchemy
     SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_ECHO = False
