@@ -1,15 +1,8 @@
-from typing import List, Dict
 import simplejson as json
-from flask import Flask, request, Response, redirect
+from flask import request, Response, redirect
 from flask import render_template
-from flaskext.mysql import MySQL
-from pymysql.cursors import DictCursor
+from __init__ import mysql, app
 
-app = Flask(__name__)
-mysql = MySQL(cursorclass=DictCursor)
-
-app.config.from_object("config.Config")
-mysql.init_app(app)
 
 @app.route('/', methods=['GET'])
 def index():
@@ -117,6 +110,7 @@ def api_add() -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
+
 @app.route('/api/v1/oscar/<int:oscar_id>', methods=['DELETE'])
 def api_delete(oscar_id) -> str:
     cursor = mysql.get_db().cursor()
@@ -125,7 +119,3 @@ def api_delete(oscar_id) -> str:
     mysql.get_db().commit()
     resp = Response(status=210, mimetype='application/json')
     return resp
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
