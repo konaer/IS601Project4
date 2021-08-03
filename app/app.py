@@ -4,12 +4,19 @@ from flask import Flask, request, Response, redirect
 from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+
 
 app = Flask(__name__)
+db = SQLAlchemy()
+login_manager = LoginManager()
 mysql = MySQL(cursorclass=DictCursor)
 
 app.config.from_object("config.Config")
 mysql.init_app(app)
+db.init_app(app)
+login_manager.init_app(app)
 
 @app.route('/', methods=['GET'])
 def index():
