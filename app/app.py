@@ -8,6 +8,8 @@ from pymysql.cursors import DictCursor
 app = Flask(__name__)
 mysql = MySQL(cursorclass=DictCursor)
 
+app.config.from_pyfile('config.Config')
+mysql.init_app(app)
 
 @app.route('/', methods=['GET'])
 def index():
